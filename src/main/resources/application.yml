@@ -3,8 +3,8 @@ spring:
     name: moneycalculator
   datasource:
     url: jdbc:postgresql://localhost:5432/moneycalculator
-    username: postgres
-    password: 1236Jesus
+    username: your-postgres-username
+    password: your-postgres-password
     driver-class-name: org.postgresql.Driver
 
   jpa:
