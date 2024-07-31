@@ -1,6 +1,7 @@
 # MoneycalculatorApplication
 
 ## Overview
+![moneycalc](https://github.com/user-attachments/assets/ab12cdfc-4e4f-4d94-89fe-b341b974ee02)
 
 MoneycalculatorApplication is a Spring Boot application that provides a RESTful API for performing various arithmetic operations. The application includes features such as user authentication with JWT, balance management, and operation history tracking.
 
