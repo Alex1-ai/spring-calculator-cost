@@ -11,7 +11,6 @@ import com.chidi.moneycalculator.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.security.SecureRandom;
 import java.util.Optional;
 
 @Service
@@ -21,10 +20,8 @@ public class CalculationService {
     private final OperationRepository operationRepository;
     private final RecordRepository recordRepository;
     private final UserRepository userRepository;
+    private final RandomStringService randomStringService;
     private static final double FIXED_COST = 10.0;
-    private static final String CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    private static final int STRING_LENGTH = 10;
-    private final SecureRandom secureRandom = new SecureRandom();
 
     public Optional<RecordDTO> performOperation(String userEmail, OperationType operationType, Double firstNum, Double secondNum) {
         Optional<User> userOptional = userRepository.findByEmail(userEmail);
@@ -76,18 +73,9 @@ public class CalculationService {
                 }
                 yield String.valueOf(Math.sqrt(firstNum));
             }
-            case RANDOM_STRING -> generateRandomString();
+            case RANDOM_STRING -> randomStringService.getRandomString();
             default -> throw new IllegalArgumentException("Invalid operation type.");
         };
-    }
-
-    private String generateRandomString() {
-        StringBuilder stringBuilder = new StringBuilder(STRING_LENGTH);
-        for (int i = 0; i < STRING_LENGTH; i++) {
-            int randomIndex = secureRandom.nextInt(CHARACTERS.length());
-            stringBuilder.append(CHARACTERS.charAt(randomIndex));
-        }
-        return stringBuilder.toString();
     }
 
     private RecordDTO mapToDTO(Record record) {
