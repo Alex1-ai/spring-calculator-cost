@@ -22,6 +22,9 @@ MoneycalculatorApplication is a Spring Boot application that provides a RESTful 
 - Mockito
 - PostgreSQL
 
+## POSTMAN DOCUMENTATION
+- `https://documenter.getpostman.com/view/19877044/2sA3kd9HCR`
+
 ## Installation
 
 ### Prerequisites
@@ -104,14 +107,17 @@ mvn spring-boot:run
 
 - **Perform Calculation**: `POST /api/v1/calculate
   Authorization: Bearer your-jwt-token
-
   data - {
      "operationType": "ADDITION",
      "firstNum": 4,
      "secondNum": 8
-  }
-`
+  }`
 
+### GET RECORDS
+
+- **Perform Calculation**: `GET /api/v1/records
+  Authorization: Bearer your-jwt-token
+`
 ## Running Tests
 
 ### Using Maven
